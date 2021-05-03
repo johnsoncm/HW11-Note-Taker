@@ -1,8 +1,8 @@
 //bring in utils and fs and unique id generator
 // and readfileasync and writefileasync
-const utils = require('utils')
+const utils = require('util')
 const fs = require('fs') 
-const uuidv1 = require('uuid/v1')
+const uuidv1 = require('uuidv1')
 console.log("uuidv1" ,uuidv1)
 
 const readFileAsync = utils.promisify(fs.readFile)
