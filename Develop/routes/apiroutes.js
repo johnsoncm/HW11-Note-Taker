@@ -6,7 +6,7 @@ const store = require('../db/store.js');
 router.get('/api/notes' , (req, res) =>{
     store
     .getNotes()
-    .then((notes)=>{
+    .then((note)=>{
         return res.json(note)
     }).catch((err) =>{
         res.status(500).json(err)
@@ -15,7 +15,7 @@ router.get('/api/notes' , (req, res) =>{
 
 router.post('/api/notes' , (req, res) => {
     store
-    .postNote(req.body)
+    .saveNote(req.body)
     .then((note)=> res.json(note))
     .catch((err) => {
         res.status(500).json(err)

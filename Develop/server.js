@@ -20,8 +20,11 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 // app.use(express.static('/public'));
 
+app.use(apiRoutes)
+app.use(htmlRoutes)
+
 //set up routes
 
-app.get('/api/notes', (req, res) => response.json("response from server"));
+// app.get('/api/notes', (req, res) => response.json("response from server"));
 
 app.listen(PORT , () => console.log(`App listening on PORT ${PORT}`));

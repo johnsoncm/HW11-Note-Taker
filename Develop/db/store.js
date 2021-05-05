@@ -34,10 +34,13 @@ class Store {
         }
     };
 
-    deleteNote(id){
+    deleteNote(noteId){
         //locate the note to be deleted using uuidv, which generates a random id
         if (newId === newId){
+            deleteNote()
             
+        }else{
+            return writeFileAsync('db/db.json' , JSON.stringify(note))
         }
     }
 }
