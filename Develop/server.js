@@ -14,7 +14,7 @@ const apiRoutes = require('./routes/apiroutes');
 //use app.use(express.static'public')
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
-app.use(express.static('/Develop/public'));
+app.use(express.static('/public'));
 
 
 app.listen(PORT , () => console.log(`App listening on PORT ${PORT}`));

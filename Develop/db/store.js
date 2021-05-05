@@ -3,12 +3,14 @@
 const utils = require('util')
 const fs = require('fs') 
 const uuidv1 = require('uuidv1')
-console.log("uuidv1" ,uuidv1)
+console.log("uuidv1" ,uuidv1())
 
 const readFileAsync = utils.promisify(fs.readFile)
 const writeFileAsync = utils.promisify(fs.writeFile)
 
 // store note as variable in a class
+
+const newID = uuidv1();
 
 class Store {
     // all functions
@@ -25,9 +27,9 @@ class Store {
     postNote(note){
         // if statement if there's not text or title error
     }
-    deleteNote(){
+    deleteNote(id){
         //locate the note to be deleted using uuidv, which generates a random id
-
+        uuidv1();
     }
 }
 
