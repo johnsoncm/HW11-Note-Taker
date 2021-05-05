@@ -18,7 +18,7 @@ class Store {
         return readFileAsync('db/db.json' , 'utf8')
     }
     write(note){
-        return writeFileAsync('db/db.json' , JSON.stringify(note))
+        return writeFileAsync('db/db.json' , JSON.stringify())
     }
 
     getNotes() {
@@ -26,10 +26,19 @@ class Store {
     }
     postNote(note){
         // if statement if there's not text or title error
-    }
+        if (text == null && title == null){
+            return ("Error")
+
+        }else{
+            return writeFileAsync('db/db.json' , JSON.stringify(note))
+        }
+    };
+
     deleteNote(id){
         //locate the note to be deleted using uuidv, which generates a random id
-        uuidv1();
+        if (newId === newId){
+            
+        }
     }
 }
 

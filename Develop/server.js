@@ -1,20 +1,27 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+
+
 const app = express();
 const PORT = 3000;
 
 //import api routes and html routes
 const htmlRoutes = require('./routes/htmlroutes');
 const apiRoutes = require('./routes/apiroutes');
+const { response } = require('express');
 
-// use app.use for api and html routes???
-// app.use(htmlRoutes)
-// app.use(apiRoutes)
+// require('./routes/htmlroutes')(app);
+// require('./routes/apiroutes')(app);
 
-//use app.use(express.static'public')
+// Set up express app to parse data
+app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
-app.use(express.static('/public'));
+// app.use(express.static('/public'));
 
+//set up routes
+
+app.get('/api/notes', (req, res) => response.json("response from server"));
 
 app.listen(PORT , () => console.log(`App listening on PORT ${PORT}`));
