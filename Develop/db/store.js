@@ -22,6 +22,7 @@ class Store {
     }
 
     getNotes(note) {
+        // return writeFileAsync('db/db.json' , JSON.stringify())
         return writeFileAsync('db/db.json' , JSON.stringify())
     }
     postNote(note){
@@ -35,6 +36,8 @@ class Store {
     };
 
     deleteNote(noteId){
+        //read all the notes from the db.json file, and remove the notes
+        //with the given id property, and then rewrite the notes to the db.json file
         //locate the note to be deleted using uuidv, which generates a random id
         if (newId === newId){
             deleteNote()

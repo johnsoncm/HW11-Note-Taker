@@ -15,7 +15,7 @@ router.get('/api/notes' , (req, res) =>{
 
 router.post('/api/notes' , (req, res) => {
     store
-    .saveNote(req.body)
+    .postNote(req.body)
     .then((note)=> res.json(note))
     .catch((err) => {
         res.status(500).json(err)
