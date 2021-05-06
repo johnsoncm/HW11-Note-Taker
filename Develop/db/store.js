@@ -21,8 +21,8 @@ class Store {
         return writeFileAsync('db/db.json' , JSON.stringify())
     }
 
-    getNotes() {
-
+    getNotes(note) {
+        return writeFileAsync('db/db.json' , JSON.stringify())
     }
     postNote(note){
         // if statement if there's not text or title error

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const store = require('../db/store.js');
+const store = require('../db/store');
 
 // 3 router methods: get, post, delete
 
