@@ -3,17 +3,18 @@ const store = require('../db/store');
 
 // 3 router methods: get, post, delete
 
-router.get('/api/notes' , (req, res) =>{
+router.get('/notes' , (req, res) =>{
     store
     .getNotes()
-    .then((note)=>{
-        return res.json(note)
+    .then((notes)=>{
+        return res.json(notes)
     }).catch((err) =>{
+        console.log("test")
         res.status(500).json(err)
     });
 });
 
-router.post('/api/notes' , (req, res) => {
+router.post('/notes' , (req, res) => {
     store
     .postNote(req.body)
     .then((note)=> res.json(note))
@@ -22,7 +23,7 @@ router.post('/api/notes' , (req, res) => {
     });  
 });
 
-router.delete('/api/notes/:id', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
     store
     .deleteNote(req.params.id)
     .then(() => res.json({ok:true}))

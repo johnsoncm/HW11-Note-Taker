@@ -30,40 +30,44 @@ class Store {
         return readFileAsync('db/db.json' , 'utf8')
     }
     write(note){
-        return writeFileAsync('db/db.json' , JSON.stringify())
+        return writeFileAsync('db/db.json' , JSON.stringify(note))
     }
 
-    getNotes(note) {
-        // return writeFileAsync('db/db.json' , JSON.stringify())
-        return writeFileAsync('db/db.json' , JSON.stringify())
+    getNotes() {
+        return this.read().then((notes) => {
+            let parsedNotes;
+            try { 
+                parsedNotes = [].concat(JSON.parse(notes))
+            } catch (error) {
+                parsedNotes = []
+            }
+            return parsedNotes
+        })
     }
     postNote(note){
-// read the file using the fs readfile function
-// this will produce array of notes in db
-        fs.readFile('db/db.json')
+        const {title, text} = note
 
-// push new note onto the notes array notes.push(note)
-// json.stringify(notes)
-       return notes.push(note).JSON.stringify(notes) 
-        // }else{
-            // return writeFileAsync('db/db.json' , JSON.stringify(note))
-        // }
+        if (!title || !text) {
+            throw new Error ("Error!!")
+        }
+        const newNote = {title, text, id:uuidv1()}
+        return this.getNotes()
+        .then((notes) => [...notes,newNote])
+        .then((updatedNotes) => this.write(updatedNotes))
+        .then(() => newNote)
+
     };
 
     deleteNote(noteId){
 
-        fs.read('db/db.json')
+      return this.getNotes()
+      .then((notes) => notes.filter((note) => note.id !== noteId)) 
+      .then((filteredNotes) => this.write(filteredNotes))
 
         //read all the notes from the db.json file, and remove the notes
         //with the given id property
      
-        if (newId === noteId){
-            deleteNote()
-            
-        }else{
-            //then rewrite the notes to the db.json file
-            return writeFileAsync('db/db.json' , JSON.stringify(note))
-        }
+
     }
 }
 
